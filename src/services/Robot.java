@@ -1,19 +1,22 @@
 package services;
 
 
+import static store.KeyValue.vecAliaces;
+
 public class Robot {
+
     Robot() {
         position = new int[]{0, 0};
-        direction = "NORTH";
+        direction = vecAliaces.get("NORTH");
     }
 
-    Robot(int[] position, String direction) {
+    Robot(int[] position, int[] direction) {
         this.position = position;
         this.direction = direction;
     }
 
-    private int[]  position;
-    private String direction;
+    private int[] position;
+    private int[] direction;
 
     public int[] getPosition() {
         return position;
@@ -23,16 +26,16 @@ public class Robot {
         this.position = position;
     }
 
-    public String getDirection() {
+    public int[] getDirection() {
         return direction;
     }
 
-    public void setDirection(String direction) {
+    public void setDirection(int[] direction) {
         this.direction = direction;
     }
 
     @Override
     public String toString() {
-        return position[0] + "," + position[1] + "," + direction;
+        return position[0] + "," + position[1] + "," + vecAliaces.values();
     }
 }
