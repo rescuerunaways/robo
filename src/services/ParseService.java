@@ -1,6 +1,7 @@
 package services;
 
 import model.Command;
+import model.CommandType;
 import model.PlaceCommand;
 
 import java.util.List;
@@ -14,8 +15,8 @@ import static store.KeyValue.vecAliaces;
 
 public class ParseService {
 
-    public static List<Command> parse(List<String> commands) {
-        return commands.stream().map(c -> parse(c)).collect(Collectors.toList());
+    public static List<Command> parse(List<String> strings) {
+        return strings.stream().map(ParseService::parse).collect(Collectors.toList());
     }
 
     private static Command parse(String s) {
@@ -24,9 +25,9 @@ public class ParseService {
 
         if (place.matches()) {
             return new PlaceCommand(new int[]{parseInt(place.group(2)), parseInt(place.group(4))},
-                vecAliaces.get(parseInt(place.group(6))));
+                vecAliaces.get(place.group(6)));
         } else if (other.matches()) {
-            return new Command(place.group(1));
+            return new Command(CommandType.valueOf(place.group(1)));
         }
         return null;
     }
