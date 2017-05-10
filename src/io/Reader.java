@@ -6,11 +6,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static java.nio.file.Files.lines;
-import static services.Processor.inputPath;
 
 
 public class Reader {
-    public static List<String> getCommands() throws IOException {
+    public static final String inputPath = "././test/test_1.txt";
+
+
+    public static List<String> readLines() throws IOException {
         return lines(Paths.get(inputPath)).collect(Collectors.toList());
     }
 }
