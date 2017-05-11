@@ -10,6 +10,7 @@ import java.util.List;
 import static model.Robot.placed;
 import static services.actions.MoveService.move;
 import static services.actions.PlaceService.place;
+import static services.actions.RotateService.rotate;
 import static services.actions.Validator.isLegal;
 
 public class ProcessService {
@@ -21,7 +22,7 @@ public class ProcessService {
     }
 
     private static void action(ICommand command) {
-        if(isLegal(command)) return;
+        if(!isLegal(command)) return;
 
         switch (command.getType()) {
             case PLACE:
@@ -29,7 +30,7 @@ public class ProcessService {
                 break;
             case RIGHT:
             case LEFT:
-                if (placed) RotateService.rotate(command);
+                if (placed) rotate(command);
                 break;
             case MOVE:
                 if (placed) move();

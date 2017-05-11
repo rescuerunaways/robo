@@ -1,7 +1,6 @@
 package services.actions;
 
 import model.ICommand;
-import model.Robot;
 
 import static java.lang.Math.*;
 import static services.actions.ProcessService.robot;
@@ -9,10 +8,9 @@ import static store.KeyValue.dirAliaces;
 
 public class RotateService {
 
-    public static Robot rotate(ICommand command) {
+    public static void rotate(ICommand command) {
         int[] newDirection = rotate(robot.getDirection(), dirAliaces.get(command.toString()));
         robot.setDirection(newDirection);
-        return robot;
     }
 
     private static int[] rotate(int[] vector, int degrees) {

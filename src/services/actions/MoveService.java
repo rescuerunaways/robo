@@ -1,20 +1,16 @@
 package services.actions;
 
-import model.Robot;
-
 import static services.actions.ProcessService.robot;
 
 public class MoveService {
 
-    public static Robot move() {
+    public static void move() {
         int[] direction = robot.getDirection();
         int[] position = robot.getPosition();
         robot.setPosition(move(direction, position));
-        return robot;
     }
 
     private static int[] move(int[] direction, int[] position) {
-        int[] newPosition = {direction[0] + position[0], direction[1] + position[1]};
-        return newPosition;
+        return new int[]{direction[0] + position[0], direction[1] + position[1]};
     }
 }
