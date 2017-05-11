@@ -1,13 +1,13 @@
 package model;
 
-public class Command {
-    private CommandType name;
+public class Command implements ICommand{
+    private CommandType type;
 
-    public Command(CommandType name) {
-        this.name = name;
+    public Command(CommandType type) {
+        this.type = type;
     }
 
-    public CommandType getName() {
-        return name;
+    public CommandType getType() {
+        return type;
     }
 }
