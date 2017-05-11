@@ -11,7 +11,6 @@ import static java.nio.file.Files.lines;
 public class Reader {
     public static final String inputPath = "././test/test_1.txt";
 
-
     public static List<String> readLines() throws IOException {
         return lines(Paths.get(inputPath)).collect(Collectors.toList());
     }

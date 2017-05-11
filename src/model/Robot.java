@@ -4,15 +4,12 @@ package model;
 import static store.KeyValue.vecAliaces;
 
 public class Robot {
-    Robot(Command command) {
+    public Robot() {
         position = new int[]{0, 0};
         direction = vecAliaces.get("NORTH");
     }
 
-    public Robot(PlaceCommand command) {
-        this.position = command.getPostion();
-        this.direction = command.getDirection();
-    }
+    public static boolean placed = false;
 
     private int[] position;
     private int[] direction;
