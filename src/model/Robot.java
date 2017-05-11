@@ -1,18 +1,36 @@
 package model;
 
 
+import static store.KeyValue.dirToString;
 import static store.KeyValue.vecAliaces;
 
 public class Robot {
-    public Robot() {
+    private static Robot robot = null;
+
+    private Robot() {
         position = new int[]{0, 0};
         direction = vecAliaces.get("NORTH");
     }
 
-    public static boolean placed = false;
+    public static Robot getRobot() {
+        if (robot == null) {
+            robot = new Robot();
+        }
+        return robot;
+    }
+
+    private boolean placed = false;
 
     private int[] position;
     private int[] direction;
+
+    public boolean isPlaced() {
+        return placed;
+    }
+
+    public void setPlaced(boolean placed) {
+        this.placed = placed;
+    }
 
     public int[] getPosition() {
         return position;
@@ -32,6 +50,8 @@ public class Robot {
 
     @Override
     public String toString() {
-        return position[0] + "," + position[1] + "," + vecAliaces.values();
+        return position[0] + "," + position[1] + "," + dirToString(direction);
     }
+
+
 }

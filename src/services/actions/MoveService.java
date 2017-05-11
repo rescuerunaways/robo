@@ -5,6 +5,7 @@ import static services.actions.ProcessService.robot;
 public class MoveService {
 
     public static void move() {
+
         int[] direction = robot.getDirection();
         int[] position = robot.getPosition();
         robot.setPosition(move(direction, position));

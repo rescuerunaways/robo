@@ -1,13 +1,12 @@
 package services.actions;
 
-import model.Command;
 import model.ICommand;
 import model.PlaceCommand;
 import model.Robot;
 
 import java.util.List;
 
-import static model.Robot.placed;
+import static model.Robot.getRobot;
 import static services.actions.MoveService.move;
 import static services.actions.PlaceService.place;
 import static services.actions.RotateService.rotate;
@@ -15,9 +14,9 @@ import static services.actions.Validator.isLegal;
 
 public class ProcessService {
 
-    public static Robot robot = new Robot();
+    public static Robot robot = getRobot();
 
-    public static void process(List<Command> commands) {
+    public static void process(List<ICommand> commands) {
         commands.stream().forEachOrdered(ProcessService::action);
     }
 
@@ -30,13 +29,13 @@ public class ProcessService {
                 break;
             case RIGHT:
             case LEFT:
-                if (placed) rotate(command);
+                if (robot.isPlaced()) rotate(command);
                 break;
             case MOVE:
-                if (placed) move();
+                if (robot.isPlaced()) move();
                 break;
             case REPORT:
-                if (placed) System.out.print(robot);
+                if (robot.isPlaced()) System.out.print(robot);
                 break;
         }
     }

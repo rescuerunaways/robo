@@ -8,12 +8,10 @@ import static services.actions.ProcessService.process;
 
 public class Launcher {
 
-    public static void main(String[] args)  {
-        try {
-            process(parse(readLines()));
-        } catch (IOException e) {
+    public static void main(String[] args) throws IOException {
 
-        }
+            process(parse(readLines()));
+
     }
 }
 

@@ -9,7 +9,7 @@ import static store.KeyValue.dirAliaces;
 public class RotateService {
 
     public static void rotate(ICommand command) {
-        int[] newDirection = rotate(robot.getDirection(), dirAliaces.get(command.toString()));
+        int[] newDirection = rotate(robot.getDirection(), dirAliaces.get(command.getType().name()));
         robot.setDirection(newDirection);
     }
 
