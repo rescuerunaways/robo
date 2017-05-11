@@ -1,15 +1,14 @@
 package model;
 
-public class PlaceCommand extends Command {
+public class PlaceCommand implements ICommand {
     private int[] position;
     private int[] direction;
 
     public PlaceCommand(int [] position, int []direction) {
-        super(CommandType.PLACE);
         this.position = position;
         this.direction = direction;
     }
-    public int[] getPostion() {
+    public int[] getPosition() {
         return position;
     }
 
@@ -17,5 +16,8 @@ public class PlaceCommand extends Command {
         return direction;
     }
 
+    public CommandType getType() {
+        return CommandType.PLACE;
+    }
 }
 

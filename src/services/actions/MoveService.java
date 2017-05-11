@@ -1,8 +1,8 @@
-package services;
+package services.actions;
 
 import model.Robot;
 
-import static services.ProcessService.robot;
+import static services.actions.ProcessService.robot;
 
 public class MoveService {
 

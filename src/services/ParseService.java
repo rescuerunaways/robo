@@ -2,6 +2,7 @@ package services;
 
 import model.Command;
 import model.CommandType;
+import model.ICommand;
 import model.PlaceCommand;
 
 import java.util.List;
@@ -15,11 +16,11 @@ import static store.KeyValue.vecAliaces;
 
 public class ParseService {
 
-    public static List<Command> parse(List<String> strings) {
+    public static List<ICommand> parse(List<String> strings) {
         return strings.stream().map(ParseService::parse).collect(Collectors.toList());
     }
 
-    private static Command parse(String s) {
+    private static ICommand parse(String s) {
         Matcher place = compile("(PLACE) (\\d)(,)(\\d)(,)(NORTH|EAST|WEST|SOUTH)").matcher(s);
         Matcher other = compile("(MOVE|RIGHT|LEFT|REPORT)").matcher(s);
 

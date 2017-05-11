@@ -1,18 +1,16 @@
-package services;
+package services.actions;
 
+import model.ICommand;
 import model.Robot;
 
 import static java.lang.Math.*;
-import static services.ProcessService.robot;
+import static services.actions.ProcessService.robot;
 import static store.KeyValue.dirAliaces;
 
-/**
- * TODO: tatianaermolaeva, добавь описание класса
- */
 public class RotateService {
 
-    public static Robot rotate(String degrees) {
-        int[] newDirection = rotate(robot.getDirection(), dirAliaces.get(degrees));
+    public static Robot rotate(ICommand command) {
+        int[] newDirection = rotate(robot.getDirection(), dirAliaces.get(command.toString()));
         robot.setDirection(newDirection);
         return robot;
     }
